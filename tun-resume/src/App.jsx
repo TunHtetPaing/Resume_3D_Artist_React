@@ -100,7 +100,7 @@ const resumeData = {
 // Section Header
 const SectionHeader = ({ icon: Icon, title }) => (
   <h2 className="section-header">
-    <Icon className="icon" />
+    <Icon className="icon" size={16} />
     {title}
   </h2>
 );
@@ -113,8 +113,7 @@ const ContactLink = ({ icon: Icon, label, value, href }) => (
     rel="noopener noreferrer"
     className="contact-link"
   >
-    <Icon className="icon-small" />
-    <span className="label">{label}:</span>
+    <Icon className="icon-small" size={10} />
     <span className="value">{value}</span>
   </a>
 );
@@ -134,16 +133,8 @@ const ExperienceItem = ({ year, title, company, location, description }) => (
 );
 
 const App = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  // useEffect and useState are not strictly needed for this simple component,
+  // but kept for compatibility with the original structure.
 
   return (
     <div className="app">
@@ -156,6 +147,7 @@ const App = () => {
               <p>{resumeData.title}</p>
             </div>
             <div className="contact">
+              {/* Simplified contact links for a cleaner look */}
               <ContactLink
                 icon={Mail}
                 label="Email"
@@ -178,18 +170,12 @@ const App = () => {
           </div>
         </header>
 
-        {/* MAIN GRID */}
+        {/* MAIN GRID - Sidebar (1/3) and Content (2/3) */}
         <div className="main-grid">
-          {/* LEFT COLUMN */}
+          {/* LEFT COLUMN - Skills and Education (Less bulky items) */}
           <div className="sidebar">
-            {/* Summary */}
-            <section>
-              <SectionHeader icon={Briefcase} title="Profile Summary" />
-              <p className="summary">{resumeData.summary}</p>
-            </section>
-
             {/* Skills */}
-            <section>
+            <section className="mb-4">
               <SectionHeader icon={Code} title="Core Skills" />
               <div className="skills">
                 {resumeData.skills.map((skill, index) => (
@@ -200,18 +186,8 @@ const App = () => {
               </div>
             </section>
 
-            {/* Tools */}
-            <section>
-              <SectionHeader icon={Zap} title="Key Tools" />
-              <ul className="tools">
-                {resumeData.tools.map((tool, index) => (
-                  <li key={index}>{tool}</li>
-                ))}
-              </ul>
-            </section>
-
             {/* Education */}
-            <section>
+            <section className="mb-4">
               <SectionHeader icon={GraduationCap} title="Education" />
               {resumeData.education.map((edu, index) => (
                 <div key={index} className="education">
@@ -221,19 +197,36 @@ const App = () => {
               ))}
             </section>
 
-            {/* Portfolio */}
+            {/* Portfolio Button (placed in sidebar for visibility) */}
             <a
               href={resumeData.contact.portfolioUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="portfolio-btn"
             >
-              <Globe className="icon-small" /> Tun's Portfolio
+              <Globe className="icon-small" size={10} /> Portfolio
             </a>
           </div>
 
-          {/* RIGHT COLUMN */}
+          {/* RIGHT COLUMN - Summary, Tools, and Experience (More bulky items) */}
           <div className="content">
+            {/* Summary - Moved to main content area for more space */}
+            <section className="mb-6">
+              <SectionHeader icon={Briefcase} title="Profile Summary" />
+              <p className="summary">{resumeData.summary}</p>
+            </section>
+
+            {/* Tools - Moved to main content area for more space */}
+            <section className="mb-6">
+              <SectionHeader icon={Zap} title="Key Tools / Software" />
+              <ul className="tools grid grid-cols-2 gap-x-6">
+                {resumeData.tools.map((tool, index) => (
+                  <li key={index}>{tool}</li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Experience */}
             <SectionHeader icon={Briefcase} title="Professional Experience" />
             <div className="timeline">
               {resumeData.experience.map((job, index) => (
