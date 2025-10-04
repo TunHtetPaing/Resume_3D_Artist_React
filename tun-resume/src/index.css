@@ -14,7 +14,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 10px;
   font-family: "Calibri", "Arial", sans-serif;
   background: var(--bg);
   color: var(--text);
