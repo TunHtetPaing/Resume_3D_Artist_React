@@ -1,0 +1,223 @@
+/* Root Variables - Print Friendly */
+:root {
+  --primary: #333366; /* Subtle dark indigo */
+  --text: #000000; /* Black text */
+  --text-muted: #555555; /* Gray for muted text */
+  --border: #cccccc; /* Light gray borders */
+  --bg: #ffffff; /* White background */
+}
+
+/* Print Setup */
+@page {
+  size: A4;
+  margin: 1.5cm;
+}
+
+body {
+  margin: 0;
+  font-family: "Calibri", "Arial", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 12pt;
+}
+
+/* Container */
+.app {
+  padding: 0;
+}
+
+.container {
+  max-width: 100%;
+  margin: auto;
+  background: var(--bg);
+}
+
+/* HEADER */
+.header {
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 24pt;
+  margin: 0;
+  color: var(--primary);
+}
+
+.header p {
+  font-size: 12pt;
+  color: var(--text-muted);
+  margin: 4px 0 0 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10pt;
+}
+
+.contact-link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+.icon,
+.icon-small {
+  display: none; /* Hide icons for print simplicity */
+}
+
+.label {
+  font-weight: bold;
+}
+
+.value {
+  margin-left: 4px;
+}
+
+/* MAIN GRID */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+/* SECTION HEADERS */
+.section-header {
+  font-size: 12pt;
+  font-weight: bold;
+  color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  margin-bottom: 8px;
+}
+
+/* SUMMARY */
+.summary {
+  color: var(--text);
+  font-size: 11pt;
+}
+
+/* SKILLS */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-badge {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 10pt;
+}
+
+/* TOOLS */
+.tools {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tools li {
+  margin-bottom: 4px;
+  font-size: 10pt;
+}
+
+/* EDUCATION */
+.education {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 10pt;
+  margin-bottom: 8px;
+}
+
+.education h3 {
+  margin: 0;
+  font-size: 11pt;
+  color: var(--primary);
+}
+
+.education p {
+  margin: 2px 0 0 0;
+  color: var(--text-muted);
+}
+
+/* PORTFOLIO BUTTON */
+.portfolio-btn {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 10pt;
+  color: var(--primary);
+  margin-top: 10px;
+}
+
+.portfolio-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* EXPERIENCE */
+.experience-item {
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 10pt;
+  break-inside: avoid; /* Prevent page break in middle */
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.experience-header h3 {
+  margin: 0;
+  font-size: 11pt;
+  color: var(--primary);
+}
+
+.year {
+  font-size: 9pt;
+  color: var(--text-muted);
+}
+
+.company {
+  margin: 4px 0;
+}
+
+.company-name {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.description {
+  font-size: 10pt;
+  color: var(--text-muted);
+}
+
+/* RESPONSIVE for small screens */
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
